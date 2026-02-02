@@ -1,8 +1,8 @@
 # Use the official Home Assistant add-on base image
-FROM ghcr.io/hassio-addons/base:14.0.0
+FROM ghcr.io/hassio-addons/base:20.0.1
 
 # Define the Newt version (used everywhere below)
-ARG NEWT_VERSION=1.8.0
+ARG NEWT_VERSION=1.9.0
 ENV NEWT_VERSION=${NEWT_VERSION}
 
 # Install dependencies
@@ -14,10 +14,6 @@ RUN ARCH=$(uname -m) && \
         curl -fsSL -o /usr/bin/newt https://github.com/fosrl/newt/releases/download/${NEWT_VERSION}/newt_linux_amd64; \
     elif [ "$ARCH" = "aarch64" ]; then \
         curl -fsSL -o /usr/bin/newt https://github.com/fosrl/newt/releases/download/${NEWT_VERSION}/newt_linux_arm64; \
-    elif [ "$ARCH" = "armv7l" ]; then \
-        curl -fsSL -o /usr/bin/newt https://github.com/fosrl/newt/releases/download/${NEWT_VERSION}/newt_linux_arm32; \
-    elif [ "$ARCH" = "armv6l" ]; then \
-        curl -fsSL -o /usr/bin/newt https://github.com/fosrl/newt/releases/download/${NEWT_VERSION}/newt_linux_arm32v6; \
     elif [ "$ARCH" = "riscv64" ]; then \
         curl -fsSL -o /usr/bin/newt https://github.com/fosrl/newt/releases/download/${NEWT_VERSION}/newt_linux_riscv64; \
     else \
