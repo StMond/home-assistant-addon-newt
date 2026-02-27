@@ -1,12 +1,10 @@
 name: "Newt Add-on"
-version: "1.10.0"
+version: "1.10.1"
 slug: "newt"
 description: "Runs Newt inside Home Assistant OS"
 icon: "icon.png"
 arch:
   - amd64
-  - armv7
-  - armhf
   - aarch64
 startup: system
 boot: auto
