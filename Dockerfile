@@ -2,7 +2,7 @@
 FROM ghcr.io/hassio-addons/base:20.0.1
 
 # Define the Newt version (used everywhere below)
-ARG NEWT_VERSION=1.10.3
+ARG NEWT_VERSION=1.10.4
 ENV NEWT_VERSION=${NEWT_VERSION}
 
 # Install dependencies
