@@ -50,7 +50,7 @@ while true; do
     export PANGOLIN_ENDPOINT="$PANGOLIN_ENDPOINT"
     export SITE_ID="$SITE_ID"
     export SITE_SECRET="$SITE_SECRET"
-    /usr/bin/pangolin up site --attach
+    /usr/bin/pangolin up site --interface newt --interface-main newt --attach
 
     echo "⚠️ Pangolin-cli stopped! Waiting 5 second before reconnecting..."
     sleep 5

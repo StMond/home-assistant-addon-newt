@@ -1,5 +1,5 @@
 name: "Newt Add-on"
-version: "1.19.0"
+version: "0.19.0"
 slug: "newt"
 description: "Runs Newt (pangolin-cli site) inside Home Assistant OS"
 icon: "icon.png"
