@@ -47,7 +47,7 @@ fi
 while true; do
     echo "🔹 Starting Pangolin-cli..."
     # Custom variables are already exported above
-    /usr/bin/pangolin up site --endpoint "$PANGOLIN_ENDPOINT" --id "$SITE_ID" --secret "$SITE_SECRET" --interface newt --interface-main newt --attach
+    /usr/bin/pangolin up site --endpoint "$PANGOLIN_ENDPOINT" --id "$SITE_ID" --secret "$SITE_SECRET" --interface newt --interface-main newt
 
     echo "⚠️ Pangolin-cli stopped! Waiting 5 second before reconnecting..."
     sleep 5
