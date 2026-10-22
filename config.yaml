@@ -1,7 +1,7 @@
 name: "Newt Add-on"
-version: "1.18.1"
+version: "1.19.0"
 slug: "newt"
-description: "Runs Newt inside Home Assistant OS"
+description: "Runs Newt (pangolin-cli site) inside Home Assistant OS"
 icon: "icon.png"
 arch:
   - amd64
@@ -14,6 +14,8 @@ privileged:
   - NET_ADMIN
   - NET_RAW
   - DAC_READ_SEARCH
+devices:
+  - /dev/net/tun
 options:
   PANGOLIN_ENDPOINT: "https://example.com"
   NEWT_ID: "your_newt_id"

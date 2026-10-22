@@ -11,21 +11,21 @@ if [[ ! -f "$CONFIG_PATH" ]]; then
 fi
 
 PANGOLIN_ENDPOINT=$(jq -r '.PANGOLIN_ENDPOINT' "$CONFIG_PATH")
-NEWT_ID=$(jq -r '.NEWT_ID' "$CONFIG_PATH")
-NEWT_SECRET=$(jq -r '.NEWT_SECRET' "$CONFIG_PATH")
+SITE_ID=$(jq -r '.NEWT_ID' "$CONFIG_PATH")
+SITE_SECRET=$(jq -r '.NEWT_SECRET' "$CONFIG_PATH")
 
 # Read custom environment variables
 CUSTOM_ENV_VARS=$(jq -r '.custom_env_vars // [] | .[]' "$CONFIG_PATH")
 
-if [[ -z "$PANGOLIN_ENDPOINT" || -z "$NEWT_ID" || -z "$NEWT_SECRET" || "$PANGOLIN_ENDPOINT" == "null" ]]; then
+if [[ -z "$PANGOLIN_ENDPOINT" || -z "$SITE_ID" || -z "$SITE_SECRET" || "$PANGOLIN_ENDPOINT" == "null" ]]; then
     echo "❌ ERROR: Missing required configuration values!"
     exit 1
 fi
 
 echo "✅ Configuration Loaded:"
 echo "  PANGOLIN_ENDPOINT=$PANGOLIN_ENDPOINT"
-echo "  NEWT_ID=$NEWT_ID"
-echo "  NEWT_SECRET=$NEWT_SECRET"
+echo "  SITE_ID=$SITE_ID"
+echo "  SITE_SECRET=${SITE_SECRET:0:4}*****${SITE_SECRET: -4}"
 
 # Process and display custom environment variables
 EXTRA_ENV=""
@@ -45,13 +45,13 @@ fi
 
 # 🔁 Auto-reconnect loop
 while true; do
-    echo "🔹 Starting Newt..."
+    echo "🔹 Starting Pangolin-cli..."
     # Custom variables are already exported above
     export PANGOLIN_ENDPOINT="$PANGOLIN_ENDPOINT"
-    export NEWT_ID="$NEWT_ID"
-    export NEWT_SECRET="$NEWT_SECRET"
-    /usr/bin/newt
+    export SITE_ID="$SITE_ID"
+    export SITE_SECRET="$SITE_SECRET"
+    /usr/bin/pangolin up site --attach
 
-    echo "⚠️ Newt stopped! Waiting 5 second before reconnecting..."
+    echo "⚠️ Pangolin-cli stopped! Waiting 5 second before reconnecting..."
     sleep 5
 done
