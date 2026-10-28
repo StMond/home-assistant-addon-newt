@@ -1,8 +1,8 @@
 # Use the official Home Assistant add-on base image
-FROM ghcr.io/hassio-addons/base:21.0.9
+FROM ghcr.io/hassio-addons/base:21.0.10
 
 # Define the Pangolin version (used everywhere below)
-ARG PANGOLIN_VERSION=0.19.0
+ARG PANGOLIN_VERSION=0.19.1
 ENV PANGOLIN_VERSION=${PANGOLIN_VERSION}
 
 # Install dependencies
@@ -20,7 +20,6 @@ RUN ARCH=$(uname -m) && \
         echo "❌ ERROR: Unsupported architecture: $ARCH"; exit 1; \
     fi && \
     chmod +x /usr/bin/pangolin
-
 
 # Copy the script into the container
 COPY run.sh /run.sh
