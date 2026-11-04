@@ -2,7 +2,7 @@
 FROM ghcr.io/hassio-addons/base:21.0.10
 
 # Define the Pangolin version (used everywhere below)
-ARG PANGOLIN_VERSION=0.19.1
+ARG PANGOLIN_VERSION=0.20.0
 ENV PANGOLIN_VERSION=${PANGOLIN_VERSION}
 
 # Install dependencies
